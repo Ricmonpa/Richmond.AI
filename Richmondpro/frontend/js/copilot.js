@@ -11,9 +11,8 @@ const CONFIG = {
         if (hostname === 'localhost' || hostname === '127.0.0.1') {
             return 'http://localhost:8000';  // Desarrollo local
         }
-        // Producción: Cambiar por la URL de tu backend en Railway
-        // Ejemplo: 'https://richmond-copilot-production.up.railway.app'
-        return 'https://TU-BACKEND-RAILWAY-URL.railway.app';
+        // Producción: URL del backend en Railway
+        return 'https://richmondai-production.up.railway.app';
     })(),
     DEBOUNCE_DELAY: 300
 };
