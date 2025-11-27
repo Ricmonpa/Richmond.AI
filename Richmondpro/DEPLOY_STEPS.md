@@ -63,7 +63,7 @@ git push -u origin main
    - **Settings** → **Start Command:** `python app.py`
 6. **Variables de entorno** (Settings → Variables):
    ```
-   GOOGLE_API_KEY = AIzaSyAV3QQ6mPpiMwCVyCfpZ1bsM2PLln-m3Ug
+   GOOGLE_API_KEY = AIzaSyDsgTclU3NaNeGWRrFpFPuFcH27cLc2WJ8
    ```
 7. **Deploy automático** comenzará
 8. ✅ **Esperar deploy** (2-3 minutos)

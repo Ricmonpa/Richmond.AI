@@ -18,7 +18,7 @@ En Railway Dashboard:
 2. Cambiar a: `Richmondpro/backend`
 3. **Start Command**: `python app.py`
 4. **Variables de entorno**:
-   - `GOOGLE_API_KEY` = `AIzaSyAV3QQ6mPpiMwCVyCfpZ1bsM2PLln-m3Ug`
+   - `GOOGLE_API_KEY` = `AIzaSyDsgTclU3NaNeGWRrFpFPuFcH27cLc2WJ8`
 5. **Redeploy**
 
 ### Opción 2: Mover Backend a Raíz (Alternativa)
@@ -40,7 +40,7 @@ mv Richmondpro/backend ./backend-railway
 - **Start Command:** `python app.py`
 
 **Variables de entorno:**
-- `GOOGLE_API_KEY` = `AIzaSyAV3QQ6mPpiMwCVyCfpZ1bsM2PLln-m3Ug`
+- `GOOGLE_API_KEY` = `AIzaSyDsgTclU3NaNeGWRrFpFPuFcH27cLc2WJ8`
 
 **Domains:**
 - Generate Domain para obtener la URL
