@@ -2,7 +2,7 @@
 
 ## Nueva API Key Configurada
 
-**Key:** `AIzaSyDKraT62pbO1md86fVJL9L9M4T0M8yH-lo`  
+**Key:** `YOUR_GOOGLE_API_KEY_HERE` (obtener de Google Cloud Console)  
 **Nombre:** "api richmond"  
 **Restricciones:** ✅ Solo "Generative Language API"  
 **Estado:** ✅ Configurada en Railway
@@ -31,7 +31,7 @@ Railway normalmente redeploya automáticamente al cambiar variables de entorno. 
 ### 2. Actualizar .env Local (Opcional)
 Si usas desarrollo local, actualiza tu `.env`:
 ```bash
-GOOGLE_API_KEY=AIzaSyDKraT62pbO1md86fVJL9L9M4T0M8yH-lo
+GOOGLE_API_KEY=YOUR_GOOGLE_API_KEY_HERE
 ```
 
 ### 3. Probar el Co-Pilot
