@@ -53,19 +53,23 @@ app = FastAPI(title="Richmond AI Co-Pilot API")
 cors_origins = [
     "http://localhost:8080",
     "http://localhost:3000",
-    "https://*.vercel.app",
-    "https://richmond-copilot.vercel.app",
+    "http://127.0.0.1:8080",
+    "https://richmond-ai.vercel.app",
+    "https://*.vercel.app",  # Para todos los subdominios de Vercel
 ]
 
 # Agregar dominio de producción si está definido
 if os.getenv("FRONTEND_URL"):
     cors_origins.append(os.getenv("FRONTEND_URL"))
 
+# En desarrollo, permitir todo. En producción, solo los orígenes permitidos
+allow_all = os.getenv("ENVIRONMENT") != "production"
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=cors_origins if os.getenv("ENVIRONMENT") == "production" else ["*"],
+    allow_origins=["*"] if allow_all else cors_origins,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
 )
 
