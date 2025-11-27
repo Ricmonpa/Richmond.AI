@@ -1,0 +1,14 @@
+{
+  "name": "richmond-ai-copilot",
+  "version": "1.0.0",
+  "description": "Richmond AI Co-Pilot Demo",
+  "scripts": {
+    "dev": "cd frontend && python3 -m http.server 8080",
+    "dev:node": "npx http-server frontend -p 8080 -o",
+    "start:backend": "cd backend && python3 app.py"
+  },
+  "keywords": ["richmond", "ai", "copilot", "edtech"],
+  "author": "",
+  "license": "MIT"
+}
+
