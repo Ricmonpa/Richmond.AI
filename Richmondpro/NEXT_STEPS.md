@@ -19,7 +19,7 @@
    - **Settings** → **Start Command:** `python app.py`
 6. **Variables de entorno** (Settings → Variables):
    ```
-   GOOGLE_API_KEY = AIzaSyDsgTclU3NaNeGWRrFpFPuFcH27cLc2WJ8
+   GOOGLE_API_KEY = YOUR_GOOGLE_API_KEY_HERE
    ```
 7. **Generar dominio**:
    - Settings → Domains → Generate Domain

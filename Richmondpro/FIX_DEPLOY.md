@@ -24,7 +24,7 @@
    - **Settings** → **Root Directory:** `backend`
    - **Settings** → **Start Command:** `python app.py`
 5. **Variables de entorno**:
-   - `GOOGLE_API_KEY` = `AIzaSyDsgTclU3NaNeGWRrFpFPuFcH27cLc2WJ8`
+   - `GOOGLE_API_KEY` = `YOUR_GOOGLE_API_KEY_HERE`
 6. **Generar dominio**: Settings → Domains → Generate Domain
 7. **Copia la URL** (ej: `https://richmond-ai-production.up.railway.app`)
 

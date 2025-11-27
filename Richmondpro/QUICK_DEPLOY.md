@@ -36,7 +36,7 @@ git push
 3. Selecciona tu repositorio
 4. En Settings → Variables:
    ```
-   GOOGLE_API_KEY = AIzaSyDsgTclU3NaNeGWRrFpFPuFcH27cLc2WJ8
+   GOOGLE_API_KEY = YOUR_GOOGLE_API_KEY_HERE
    ```
 5. En Settings → Deploy:
    ```

@@ -24,7 +24,7 @@ Railway debería ahora:
    - O dejar vacío (usará Procfile)
 
 3. **Variables de entorno**:
-   - `GOOGLE_API_KEY` = `AIzaSyDsgTclU3NaNeGWRrFpFPuFcH27cLc2WJ8`
+   - `GOOGLE_API_KEY` = `YOUR_GOOGLE_API_KEY_HERE`
 
 4. **Redeploy** después de los cambios
 

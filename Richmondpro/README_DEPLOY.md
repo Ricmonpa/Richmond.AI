@@ -41,7 +41,7 @@ git push -u origin main
    - **Root Directory:** `backend`
    - **Start Command:** `python app.py`
 5. Variables de entorno:
-   - `GOOGLE_API_KEY`: `AIzaSyDsgTclU3NaNeGWRrFpFPuFcH27cLc2WJ8`
+   - `GOOGLE_API_KEY`: `YOUR_GOOGLE_API_KEY_HERE`
 6. Railway te dará una URL (ej: `https://richmond-copilot-production.up.railway.app`)
 
 ### 5️⃣ Actualizar Frontend con URL del Backend

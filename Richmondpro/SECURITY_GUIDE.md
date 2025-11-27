@@ -66,8 +66,9 @@ Basado en la [documentación oficial de Google](https://ai.google.dev/gemini-api
 1. Ir a **Settings** → **Variables**
 2. Agregar variable:
    - Name: `GOOGLE_API_KEY`
-   - Value: `tu-api-key-real-aqui`
-3. **NO** incluir en código o documentación
+   - Value: `TU_API_KEY_REAL_AQUI` (obtener de Google Cloud Console)
+3. **NUNCA** incluir en código o documentación
+4. **SOLO** usar variables de entorno del servidor
 
 ### Vercel (Frontend)
 

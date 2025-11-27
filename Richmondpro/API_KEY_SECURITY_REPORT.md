@@ -7,7 +7,7 @@
 
 ## 🔍 Causa Raíz
 
-La API key de Google Gemini (`AIzaSyDsgTclU3NaNeGWRrFpFPuFcH27cLc2WJ8`) fue **expuesta públicamente** en múltiples archivos de documentación (`.md`) que están en el repositorio de GitHub.
+La API key de Google Gemini (`YOUR_GOOGLE_API_KEY_HERE`) fue **expuesta públicamente** en múltiples archivos de documentación (`.md`) que están en el repositorio de GitHub.
 
 ### Archivos que contienen la API key expuesta:
 

@@ -4,7 +4,7 @@
 
 ### 1. **Variables de Entorno** ✅
 - `GOOGLE_API_KEY` está configurada correctamente
-- Valor: `AIzaSyDsgTclU3NaNeGWRrFpFPuFcH27cLc2WJ8`
+- Valor: `YOUR_GOOGLE_API_KEY_HERE`
 
 ### 2. **Source Settings** ✅
 - **Root Directory:** `/Richmondpro/backend` ✅ CORRECTO

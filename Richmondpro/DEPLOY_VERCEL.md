@@ -102,7 +102,7 @@ No se necesitan variables de entorno para el frontend.
 
 ### En Railway/Render (Backend):
 ```bash
-GOOGLE_API_KEY=AIzaSyDsgTclU3NaNeGWRrFpFPuFcH27cLc2WJ8
+GOOGLE_API_KEY=YOUR_GOOGLE_API_KEY_HERE
 PORT=8000
 ```
 

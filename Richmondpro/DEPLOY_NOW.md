@@ -41,7 +41,7 @@
 6. **Variables de entorno** (Settings → Variables → Add Variable):
    ```
    Name: GOOGLE_API_KEY
-   Value: AIzaSyDsgTclU3NaNeGWRrFpFPuFcH27cLc2WJ8
+   Value: YOUR_GOOGLE_API_KEY_HERE
    ```
 7. **Generar dominio** (Settings → Domains → Generate Domain)
 8. ⏱️ Espera 2-3 minutos para el deploy
