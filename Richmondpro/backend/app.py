@@ -51,12 +51,15 @@ app = FastAPI(title="Richmond AI Co-Pilot API")
 # Configurar CORS
 # Permitir todos los orígenes para desarrollo y producción
 # Esto resuelve problemas de CORS con Vercel y otros dominios
+# NOTA: No se puede usar allow_origins=["*"] con allow_credentials=True
+# Por eso usamos una lista explícita o deshabilitamos credentials
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Permitir todos los orígenes
-    allow_credentials=True,
-    allow_methods=["*"],
+    allow_credentials=False,  # Cambiado a False para compatibilidad con "*"
+    allow_methods=["GET", "POST", "OPTIONS", "PUT", "DELETE"],  # Métodos explícitos
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # Inicializar clientes de LLM
