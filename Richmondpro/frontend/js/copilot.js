@@ -75,11 +75,17 @@ function closeCopilot() {
  */
 async function loadWelcomeMessage() {
     try {
+        console.log('🔗 Intentando conectar a:', CONFIG.API_URL);
         const response = await fetch(`${CONFIG.API_URL}/welcome`);
+        console.log('📡 Respuesta del servidor:', response.status, response.statusText);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         addMessage('ai', data.message);
     } catch (error) {
-        console.error('Error cargando mensaje de bienvenida:', error);
+        console.error('❌ Error cargando mensaje de bienvenida:', error);
+        console.error('🔍 URL intentada:', CONFIG.API_URL);
         addMessage('ai', '¡Bienvenido! Soy el Richmond AI Co-Pilot. ¿Cómo puedo ayudarte hoy?');
     }
 }
@@ -111,6 +117,7 @@ async function sendMessage() {
     setTyping(true);
     
     try {
+        console.log('📤 Enviando mensaje a:', `${CONFIG.API_URL}/chat`);
         // Llamar a la API
         const response = await fetch(`${CONFIG.API_URL}/chat`, {
             method: 'POST',
@@ -123,11 +130,16 @@ async function sendMessage() {
             })
         });
         
+        console.log('📡 Respuesta del servidor:', response.status, response.statusText);
+        
         if (!response.ok) {
+            const errorText = await response.text();
+            console.error('❌ Error del servidor:', errorText);
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const data = await response.json();
+        console.log('✅ Respuesta recibida:', data);
         
         // Agregar respuesta de la IA
         addMessage('ai', data.response);
@@ -139,8 +151,9 @@ async function sendMessage() {
         });
         
     } catch (error) {
-        console.error('Error enviando mensaje:', error);
-        addMessage('ai', 'Lo siento, hubo un error al procesar tu consulta. Por favor, intenta nuevamente.');
+        console.error('❌ Error enviando mensaje:', error);
+        console.error('🔍 URL intentada:', `${CONFIG.API_URL}/chat`);
+        addMessage('ai', `Lo siento, hubo un error al procesar tu consulta. ${error.message || 'Por favor, intenta nuevamente.'}`);
     } finally {
         setTyping(false);
     }
