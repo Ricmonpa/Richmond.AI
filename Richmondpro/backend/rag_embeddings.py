@@ -186,11 +186,20 @@ class SimpleEmbeddingRAG:
         """
         relevant_chunks = self.search(query, top_k=10)
         
+        # Debug: mostrar scores
+        print(f"🔍 Query: {query[:50]}...")
+        print(f"📊 Scores de chunks: {[(i, round(s, 4)) for i, (_, s) in enumerate(relevant_chunks[:5])]}")
+        
         context_parts = []
         current_length = 0
         
+        # Si no hay chunks con buen score, devolver los primeros chunks de todas formas
+        # (útil cuando la query es en otro idioma que el contenido)
+        has_good_scores = any(score >= 0.01 for _, score in relevant_chunks)
+        
         for chunk, score in relevant_chunks:
-            if score < 0.01:  # Filtrar chunks con muy baja relevancia
+            # Solo filtrar si hay otros chunks con buen score
+            if has_good_scores and score < 0.005:
                 continue
             
             chunk_text = f"## {chunk.get('title', 'Contenido')}\n"
@@ -206,6 +215,15 @@ class SimpleEmbeddingRAG:
                 if remaining > 100:
                     context_parts.append(chunk_text[:remaining] + "...")
                 break
+        
+        # Si no se encontró nada, devolver los primeros chunks como contexto general
+        if not context_parts and self.chunks:
+            print("⚠️ No se encontró coincidencia exacta, usando contexto general")
+            for chunk in self.chunks[:3]:  # Primeros 3 chunks como fallback
+                chunk_text = f"## {chunk.get('title', 'Contenido')}\n"
+                chunk_text += f"**Fuente:** {chunk.get('url', 'N/A')}\n\n"
+                chunk_text += f"{chunk.get('content', '')}\n\n"
+                context_parts.append(chunk_text)
         
         return "\n".join(context_parts) if context_parts else "No se encontró información relevante en el sitio web."
 
