@@ -252,8 +252,8 @@ class RichmondProScraper:
         print(f"✅ Scraping completado: {len(all_content)} páginas scrapeadas")
         return all_content
     
-    def chunk_content(self, content_list: List[Dict], chunk_size: int = 11, overlap: int = 2) -> List[Dict[str, str]]:
-        """Divide el contenido en chunks para RAG, creando muchos chunks pequeños"""
+    def chunk_content(self, content_list: List[Dict], chunk_size: int = 150, overlap: int = 30) -> List[Dict[str, str]]:
+        """Divide el contenido en chunks para RAG, con contexto suficiente para respuestas coherentes"""
         chunks = []
         
         for page in content_list:
@@ -368,8 +368,8 @@ def main():
     # Scrapear sitio (aumentado a 100 páginas para obtener más contenido)
     content = scraper.scrape_site(max_pages=100)
     
-    # Dividir en chunks (chunk_size muy pequeño para crear 50+ chunks)
-    chunks = scraper.chunk_content(content, chunk_size=11, overlap=2)
+    # Dividir en chunks (chunk_size de 150 palabras para contexto coherente)
+    chunks = scraper.chunk_content(content, chunk_size=150, overlap=30)
     
     # Guardar
     scraper.save_to_file(chunks)
