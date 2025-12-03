@@ -44,6 +44,9 @@ function init() {
     elements.send.addEventListener('click', sendMessage);
     elements.input.addEventListener('keydown', handleInputKeydown);
     
+    // Inicializar manejo de teclado en móvil
+    initMobileKeyboardHandler();
+    
     // Abrir automáticamente al cargar (para demo)
     setTimeout(() => {
         openCopilot();
@@ -315,6 +318,65 @@ function hideTypingIndicator() {
 function scrollToBottom() {
     const messagesContainer = elements.messages.parentElement;
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+/**
+ * Manejo de teclado en móvil - comportamiento tipo WhatsApp
+ */
+function initMobileKeyboardHandler() {
+    // Solo en dispositivos móviles
+    if (!('visualViewport' in window)) {
+        return;
+    }
+    
+    const viewport = window.visualViewport;
+    let lastHeight = viewport.height;
+    
+    function handleViewportResize() {
+        const currentHeight = viewport.height;
+        const heightDiff = lastHeight - currentHeight;
+        
+        // Si la altura disminuyó significativamente, el teclado apareció
+        if (heightDiff > 100) {
+            // Actualizar variable CSS con la nueva altura del viewport
+            document.documentElement.style.setProperty('--viewport-height', `${currentHeight}px`);
+            
+            // Scroll al input cuando el teclado aparece
+            setTimeout(() => {
+                elements.input.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        } 
+        // Si la altura aumentó, el teclado desapareció
+        else if (heightDiff < -100) {
+            // Restaurar altura completa
+            document.documentElement.style.setProperty('--viewport-height', `${viewport.height}px`);
+        }
+        
+        lastHeight = currentHeight;
+    }
+    
+    // Escuchar cambios en el viewport (cuando aparece/desaparece el teclado)
+    viewport.addEventListener('resize', handleViewportResize);
+    viewport.addEventListener('scroll', handleViewportResize);
+    
+    // Configuración inicial
+    document.documentElement.style.setProperty('--viewport-height', `${viewport.height}px`);
+    
+    // Manejar focus en el input
+    elements.input.addEventListener('focus', () => {
+        // Pequeño delay para que el teclado aparezca primero
+        setTimeout(() => {
+            handleViewportResize();
+        }, 300);
+    });
+    
+    // Prevenir comportamiento problemático en iOS
+    if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+        elements.input.addEventListener('blur', () => {
+            // Prevenir que el scroll quede en posición incorrecta
+            window.scrollTo(0, 0);
+        });
+    }
 }
 
 // Inicializar cuando el DOM esté listo

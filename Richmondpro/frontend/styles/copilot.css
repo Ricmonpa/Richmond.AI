@@ -111,6 +111,7 @@ body {
     min-width: var(--copilot-min-width);
     max-width: var(--copilot-max-width);
     height: 100vh;
+    height: 100dvh; /* Dynamic viewport height para móvil */
     background: var(--copilot-bg);
     box-shadow: -2px 0 10px var(--copilot-shadow);
     display: flex;
@@ -352,6 +353,8 @@ body {
     padding: 1rem;
     background: white;
     border-top: 1px solid var(--copilot-border);
+    position: relative;
+    transition: transform 0.2s ease-out;
 }
 
 .copilot-input-container {
@@ -461,6 +464,38 @@ body {
     .copilot-toggle {
         padding: 1rem;
         border-radius: 50%;
+    }
+    
+    /* Comportamiento móvil: panel ajustado al teclado */
+    .copilot-panel {
+        /* Usar altura dinámica del viewport visual */
+        height: 100vh;
+        height: var(--viewport-height, 100vh);
+    }
+    
+    /* Asegurar que el body se ajuste correctamente */
+    .copilot-body {
+        /* Altura flexible que se ajusta al teclado */
+        flex: 1;
+        min-height: 0; /* Importante para flexbox */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling en iOS */
+    }
+    
+    /* Footer pegado al teclado */
+    .copilot-footer {
+        position: sticky;
+        bottom: 0;
+        flex-shrink: 0;
+        /* Sombra superior para separar visualmente */
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Input con mejor UX en móvil */
+    .copilot-input {
+        font-size: 16px; /* Prevenir zoom en iOS */
+        -webkit-appearance: none;
+        appearance: none;
     }
 }
 
